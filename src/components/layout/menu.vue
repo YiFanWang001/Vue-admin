@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-sub-menu :index="data.path" v-if="data.children.length != 0">
+    <el-sub-menu :index="data.id + ''" v-if="data.children.length != 0">
       <template #title>
         <span> {{ data.title }}</span>
       </template>
@@ -18,11 +18,10 @@
 
 <script setup>
 import MenuNav from './menu.vue'
-import { reactive, ref } from 'vue'
-const props = {
+import { reactive, ref, defineProps } from 'vue'
+const props = defineProps({
   data: Object
-}
-console.log(props.data)
+})
 </script>
 
 <style lang="scss" scoped></style>
