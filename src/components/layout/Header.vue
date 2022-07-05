@@ -7,7 +7,7 @@
           <el-avatar :size="30" :src="data.list.avatar" />
         </div>
       </div>
-      <el-dropdown type="primary" @click="handleClick">
+      <el-dropdown type="primary">
         <span>
           {{ data.list.username }}<el-icon><ArrowDown /></el-icon
         ></span>

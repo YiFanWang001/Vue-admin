@@ -5,6 +5,9 @@ const routes = [{
         path: '/',
         name: 'home',
         component: Home,
+        meta: {
+            title: '首页'
+        },
         children: [{
                 path: '/sys/users',
                 name: 'users',
@@ -12,7 +15,10 @@ const routes = [{
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
                 component: () =>
-                    import ( /* webpackChunkName: "about" */ '../views/sys/users')
+                    import ( /* webpackChunkName: "about" */ '../views/sys/users'),
+                meta: {
+                    title: '用户管理'
+                }
             },
             {
                 path: '/sys/menus',
@@ -21,7 +27,10 @@ const routes = [{
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
                 component: () =>
-                    import ( /* webpackChunkName: "about" */ '../views/sys/menus')
+                    import ( /* webpackChunkName: "about" */ '../views/sys/menus'),
+                meta: {
+                    title: '菜单管理'
+                }
             },
             {
                 path: '/sys/roles',
@@ -30,7 +39,10 @@ const routes = [{
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
                 component: () =>
-                    import ( /* webpackChunkName: "about" */ '../views/sys/roles')
+                    import ( /* webpackChunkName: "about" */ '../views/sys/roles'),
+                meta: {
+                    title: '角色管理'
+                }
             },
             {
                 path: '/sys/dicts',
@@ -39,7 +51,10 @@ const routes = [{
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
                 component: () =>
-                    import ( /* webpackChunkName: "about" */ '../views/sys/dicts')
+                    import ( /* webpackChunkName: "about" */ '../views/sys/dicts'),
+                meta: {
+                    title: '数字字典'
+                }
             }
         ]
     },

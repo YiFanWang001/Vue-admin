@@ -6,7 +6,7 @@ export default {
     namespaced: true,
     state: () => ({
         img: '',
-        token: getItem('token') || ''
+        token: ''
     }),
     getters: {},
     mutations: {
@@ -18,12 +18,13 @@ export default {
     },
     actions: {
         async getlogin({ commit }) {
-            const { data } = await Verification()
-            commit('code', data)
-            console.log(data)
+            const data = await Verification()
+            commit('code', data.data)
         },
+
         async login({ commit }, string) {
             const list = await login(string)
+            console.log('99999999999999', list)
             if (list.code === 200) {
                 router.push('/')
             }
