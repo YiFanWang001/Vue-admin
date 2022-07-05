@@ -1,12 +1,11 @@
 <template>
   <div>
-    <Container></Container>
+    <router-view></router-view>
   </div>
 </template>
 
 <script setup>
 import { reactive, ref } from 'vue'
-import Container from '@/components/Container.vue'
 </script>
 
 <style lang="scss" scoped></style>

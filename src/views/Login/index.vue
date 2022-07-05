@@ -3,20 +3,20 @@
     <div class="form">
       <el-form
         ref="ruleFormRef"
-        :model="data.ruleForm"
+        :model="loginForm"
         status-icon
         :rules="rules"
         label-width="120px"
         class="demo-ruleForm"
       >
         <el-form-item label="用户名" prop="username">
-          <el-input v-model="data.ruleForm.username" type="text" />
+          <el-input v-model="loginForm.username" type="text" />
         </el-form-item>
         <el-form-item label="密码" prop="password">
-          <el-input v-model="data.ruleForm.password" type="password" />
+          <el-input v-model="loginForm.password" type="password" />
         </el-form-item>
         <el-form-item label="验证码" prop="code">
-          <el-input v-model="data.ruleForm.code" type="text" class="img" />
+          <el-input v-model="loginForm.code" type="text" class="img" />
           <img
             :src="store.state.login.img"
             alt=""
@@ -36,12 +36,15 @@
 import { reactive, ref } from 'vue'
 import { useStore } from 'vuex'
 const store = useStore()
+const ruleFormRef = ref()
+
+const loginForm = reactive({
+  username: 'test',
+  password: '1234567',
+  code: '',
+  token: ''
+})
 const data = reactive({
-  ruleForm: {
-    password: '',
-    username: 'tset',
-    code: ''
-  },
   img: ''
 })
 const rules = reactive({
@@ -52,12 +55,22 @@ const rules = reactive({
 const getlist = async () => {
   await store.dispatch('login/getlogin')
   data.img = store.state.login.img
+  loginForm.token = store.state.login.token
 }
 const token = () => {
   getlist()
 }
 getlist()
-const resetForm = () => ({})
+const submitForm = async () => {
+  console.log(loginForm)
+  if (!ruleFormRef.value) return
+  await ruleFormRef.value.validate(async (valid) => {
+    if (valid) {
+      const string = `username=${loginForm.username}&password=${loginForm.password}&code=${loginForm.code}&token=${loginForm.token}`
+      await store.dispatch('login/login', string)
+    }
+  })
+}
 </script>
 
 <style lang="scss" scoped>
