@@ -12,6 +12,7 @@ instance.interceptors.request.use(
     function(config) {
         // 在发送请求之前做些什么
         config.headers.Authorization = token
+        config.Origin = 'https://www.markerhub.com/vueadmin-java'
         return config
     },
     function(error) {

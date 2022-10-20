@@ -2,7 +2,8 @@
   <div>
     <el-sub-menu :index="data.id + ''" v-if="data.children.length != 0">
       <template #title>
-        <span> {{ data.title }}</span>
+        <span> {{ data.title }}</span
+        >/
       </template>
       <MenuNav
         v-for="(item, index) in data.children"

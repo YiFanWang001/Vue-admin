@@ -17,6 +17,7 @@ module.exports = {
         indent: 'off',
         'vue/multi-word-component-names': 'off',
         'space-in-parens': 'off',
-        'func-call-spacing': 'off'
+        'func-call-spacing': 'off',
+        eqeqeq: 'off'
     }
 }

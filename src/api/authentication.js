@@ -1,5 +1,5 @@
-import router from './router'
-import store from './store'
+import router from '@/router'
+import store from '@/store'
 
 // 定义一个用户未登录情况下可以访问的白名单
 const whiteList = ['/login']
